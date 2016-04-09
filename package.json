@@ -1,0 +1,38 @@
+{
+  "name": "nuimo-mqtt-manager",
+  "version": "1.0.0",
+  "description": "Daemon to make Senic Nuimo events available through apps over MQTT",
+  "main": "build/app/app.js",
+  "scripts": {
+    "fix-nuimo-client": "cd node_modules/nuimo-client && npm install",
+    "install-typings": "cd src && typings install",
+    "postinstall": "npm run fix-nuimo-client && npm run install-typings",
+    "prebuild": "rimraf build",
+    "build": "tsc -p src/ || true",
+    "test": "mocha build/test --debug-brk --require source-map-support/register || true",
+    "clean": "rimraf build"
+  },
+  "keywords": [
+    "Senic",
+    "Nuimo",
+    "MQTT"
+  ],
+  "author": "Hans Bakker",
+  "license": "ISC",
+  "devDependencies": {
+    "rimraf": "^2.5.2",
+    "sinon": "^1.17.3",
+    "typescript": "^1.8.9",
+    "typings": "^0.7.9",
+    "assert": "^1.3.0",
+    "mocha": "^2.4.5",
+    "tslint": "^3.6.0"
+  },
+  "dependencies": {
+    "automapper-ts": "^1.6.3",
+    "mqtt": "^1.7.4",
+    "nuimo-client": "git+https://github.com/brendonparker/nuimo-client.js.git",
+    "nuimo-client-ts": "file:///Users/hansmbakker/nuimo-client.ts/nuimo-client-ts-0.4.0.tgz",
+    "source-map-support": "^0.4.0"
+  }
+}

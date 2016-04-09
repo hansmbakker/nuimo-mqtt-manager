@@ -1,0 +1,14 @@
+{
+    "ambientDependencies": {
+        "mqtt": "registry:dt/mqtt#0.0.0+20160317120654",
+        "noble": "registry:dt/noble#0.0.0+20160406120732",
+        "node": "registry:dt/node#4.0.0+20160330064709"
+    },
+    "ambientDevDependencies": {
+        "assert": "registry:dt/assert#0.0.0+20160317120654",
+        "mocha": "registry:dt/mocha#2.2.5+20160317120654"
+    },
+    "devDependencies": {
+        "sinon": "registry:npm/sinon#1.16.0+20160309002336"
+    }
+}
