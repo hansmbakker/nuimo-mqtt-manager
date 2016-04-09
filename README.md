@@ -5,7 +5,9 @@ It removes the limitation of not being able to control the music on your phone w
 # Multiple Nuimos
 This is not worked out in the application yet since I had no devices to test with, but the protocol is prepared for it.
 
-# Use cases (note: these are ideas, but not all use cases are worked out)
+# Use cases
+*Note: these are ideas, but not all use cases are implemented*
+
 - Peter has Photoshop on his computer and a music player on his phone. He would like to control both applications with Nuimo without disconnect Nuimo from one of the devices.
 - Sandra has two Nuimos: one in her living room and one in her bedroom. She wants to control Photoshop, the light and music with her Nuimo in the living room, but the one in her bedroom should be simple: she wants to control only the light with that one.
 - Kwint has Photoshop and After Effects on his computer. When he uses Alt-Tab to switch between applications, he wants to have the controls on his Nuimo for the application that he switched to.
@@ -29,6 +31,7 @@ This is not worked out in the application yet since I had no devices to test wit
 
 # User interface
 A proposal for a user interface is shown below:
+
 ![User interface proposal](https://raw.githubusercontent.com/wind-rider/nuimo-mqtt-manager/master/doc/example.png)
 
 * Aggregate list of all available app controls
