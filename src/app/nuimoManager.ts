@@ -22,6 +22,7 @@ export class NuimoManager {
             let ledMatrixBuffer = this.nuimo.createLEDMatrixBuffer(fixedIcon);
             await this.nuimo.writeLEDS(ledMatrixBuffer, brightness, duration);
         }
+        return;
     }
 
     processEvent = (update: Update): void => {
@@ -43,7 +44,7 @@ function fixIcon(icon: NuimoIcon): string[] {
         unfixedIconString = icon;
     }
 
-    let tempArr = unfixedIconString.split("").filter(x => x === " " || x === "*" || x === "1" || x === "0");
+    let tempArr = unfixedIconString.split("");
     if (tempArr.length !== 81) {
         throw "data must be 81 bits";
     }
@@ -51,8 +52,9 @@ function fixIcon(icon: NuimoIcon): string[] {
     let fixedArray = tempArr.map(x => {
         switch (x) {
             case " ": return "0";
-            case "*": return "1";
-            default: return x;
+            case "0": return "0";
+            case "1": return "1";
+            default: return "1";
         }
     })
     return fixedArray;
