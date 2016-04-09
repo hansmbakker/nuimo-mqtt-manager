@@ -2,7 +2,8 @@
 This application is meant as a proof of concept to let multiple Nuimos work with multiple apps running on multiple devices.
 It removes the limitation of not being able to control the music on your phone while your computer is connected to it. 
 
-# Multiple Nuimos not worked out in the application yet, but the protocol is prepared for it
+# Multiple Nuimos
+This is not worked out in the application yet since I had no devices to test with, but the protocol is prepared for it.
 
 # Use cases (note: these are ideas, but not all use cases are worked out)
 - Peter has Photoshop on his computer and a music player on his phone. He would like to control both applications with Nuimo without disconnect Nuimo from one of the devices.
@@ -12,28 +13,35 @@ It removes the limitation of not being able to control the music on your phone w
 - Jeff has a programming language that does not work well with Bluetooth Low Energy. He still wants his application to work with Nuimo.
 
 # Technical solution
-- Aggregate list of available app controls
-    - App controls built into the manager app
+- Aggregate list of available app controls (not worked out)
+    - App controls built into the manager app 
     - Additional app controls dynamically added from other apps
-- List of Nuimos
+- List of Nuimos (not worked out)
     - List is filled by discovering Nuimos
     - Disconnected Nuimos stay in the list unless the user deletes them
     - Nuimos can have different states
     - App controls can be assigned to Nuimos that are not connected
 - Apps communicate over MQTT
-    - Apps register and unregister themselves via MQTT on a general MQTT management channel (nuimo/)
+    - Apps register and unregister themselves via MQTT on a general MQTT management channel (nuimo)
     - Apps receive their commands on their own MQTT channel (nuimo/<nuimo-uuid>/<appId>)
     - Apps can publish icons on their own MQTT channel (nuimo/<nuimo-uuid>/<appId>)
     - Apps can request their controls to be active on a certain Nuimo via MQTT
 
 # User interface
+A proposal for a user interface is shown below:
+![User interface proposal](https://raw.githubusercontent.com/wind-rider/nuimo-mqtt-manager/master/doc/example.png)
+
 * Aggregate list of all available app controls
     * Built-in app controls that are built into the manager app
     * Additional app controls dynamically added from other apps
+    * App controls can be unregistered by clicking the minus button
 * List of Nuimos
     * Nuimos enter the list automatically by discovery
+    * Users can overwrite the Nuimo's default ID with a userfriendly name
     * Nuimos are not automatically removed when they disconnect or are out of sight
-    * Nuimos can be deleted by the user
+    * Nuimos can be forgotten by the user by clicking the minus button
+* Assigning of app controls to Nuimos
+    * Available app controls can be added to a Nuimo by selecting a Nuimo and dragging the app control to the list showing the app controls for that Nuimo
 
 # Protocol
 There are three types of channels (MQTT topics):
