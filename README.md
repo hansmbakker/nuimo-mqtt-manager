@@ -25,8 +25,8 @@ This is not worked out in the application yet since I had no devices to test wit
     - App controls can be assigned to Nuimos that are not connected
 - Apps communicate over MQTT
     - Apps register and unregister themselves via MQTT on a general MQTT management channel (nuimo)
-    - Apps receive their commands on their own MQTT channel (nuimo/<nuimo-uuid>/<appId>)
-    - Apps can publish icons on their own MQTT channel (nuimo/<nuimo-uuid>/<appId>)
+    - Apps receive their commands on their own MQTT channel (nuimo/\<nuimo-uuid\>/\<appId\>)
+    - Apps can publish icons on their own MQTT channel (nuimo/\<nuimo-uuid\>/\<appId\>)
     - Apps can request their controls to be active on a certain Nuimo via MQTT
 
 # User interface
@@ -49,11 +49,11 @@ A proposal for a user interface is shown below:
 # Protocol
 There are three types of channels (MQTT topics):
 
-* nuimo - this is a general channel where apps register and unregister themselves. Also the central app can show the current state here
-* nuimo/log - this is a logging channel for debugging purposes
-* nuimo/<nuimo-uuid>/<appId> - these are the channels where apps receive the messages from their nuimo if they are active, and where they post their icons
+* **nuimo** - this is a general channel where apps register and unregister themselves. Also the central app can show the current state here
+* **nuimo/log** - this is a logging channel for debugging purposes
+* **nuimo/\<nuimo-uuid\>/\<appId\>** - these are the channels where apps receive the messages from their nuimo if they are active, and where they post their icons
 
-## nuimo
+## MQTT topic: `nuimo`
 ### register
 Command sent by an app to let the nuimo-mqtt daemon
 * add the app to the available apps list
@@ -81,7 +81,7 @@ Format:
 } 
 ```
 
-## nuimo/<nuimo-uuid>/<appId>
+## MQTT topic: `nuimo/<nuimo-uuid>/<appId>`
 
 Nuimo events are only sent to the app that is currently 'active' on a Nuimo so that there will not be unintended input to other apps. Apps can still request to become active by publishing a `listenPlease` command on their channel.  
 
