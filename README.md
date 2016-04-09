@@ -46,6 +46,14 @@ A proposal for a user interface is shown below:
 * Assigning of app controls to Nuimos
     * Available app controls can be added to a Nuimo by selecting a Nuimo and dragging the app control to the list showing the app controls for that Nuimo
 
+# System diagram
+A system overview is shown below.
+* The Nuimos connect over BLE to a device running the manager application
+* The client applications connect via a MQTT broker (message bus) to the manager application. This MQTT broker can be hosted in your home or in the cloud.
+
+![Nuimo-MQTT system overview](https://raw.githubusercontent.com/wind-rider/nuimo-mqtt-manager/master/doc/nuimo_mqtt.png)
+
+
 # Protocol
 There are three types of channels (MQTT topics):
 
