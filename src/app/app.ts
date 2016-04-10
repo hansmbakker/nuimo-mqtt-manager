@@ -53,9 +53,9 @@ class NuimoMqttManager implements NuimoDelegate {
 
         let currentAppTopic = this.currentAppTopic();
         if (currentAppTopic) {
-            
+
             let nuimoEventMessage = createNuimoEventMessage(update);
-            
+
             this.mqttClient.publish(currentAppTopic, JSON.stringify(nuimoEventMessage));
         }
     }
@@ -67,7 +67,7 @@ class NuimoMqttManager implements NuimoDelegate {
 
     setupMqtt = async () => {
         return new Promise<void>((resolve, reject) => {
-            this.mqttClient = MqttJs.connect("ws://broker.mqttdashboard.com:8000");
+            this.mqttClient = MqttJs.connect("ws://broker.hivemq.com:8000");
 
             this.mqttClient.on("connect", () => {
                 this.mqttClient.subscribe(this.mainTopic);
@@ -185,7 +185,7 @@ class NuimoMqttManager implements NuimoDelegate {
             this.nuimoManager.showIcon(icon, iconMessage.brightness, iconMessage.duration)
         }
         else {
-            this.logMqtt("icon " + iconName + " not defined!");            
+            this.logMqtt("icon " + iconName + " not defined!");
         }
     }
 
