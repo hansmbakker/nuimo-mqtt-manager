@@ -1,6 +1,9 @@
 # Introduction
 This application is meant as a proof of concept to let multiple Nuimos work with multiple apps running on multiple devices.
-It removes the limitation of not being able to control the music on your phone while your computer is connected to it. 
+It removes the limitation of not being able to control the music on your phone while your computer is connected to it.
+
+# Demonstration
+A demo video can be seen at https://vimeo.com/162261040.
 
 # Multiple Nuimos
 This is not worked out in the application yet since I had no devices to test with, but the protocol is prepared for it.
