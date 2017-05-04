@@ -3,10 +3,10 @@ import "source-map-support/register";
 import MqttJs = require("mqtt");
 import { Update, SwipeUpdate } from "nuimo-client-ts";
 
-import { AppManager } from "./AppManager";
+import { AppManager } from "./appManager";
 import { NuimoApp } from "./nuimoApp";
 
-import { NuimoManager, NuimoDelegate } from "./NuimoManager";
+import { NuimoManager, NuimoDelegate } from "./nuimoManager";
 import { NuimoMqttMessage, NuimoMqttRegisterCommand, NuimoMqttUnregisterCommand, NuimoShowIconCommand, NuimoShowNamedIconCommand, NuimoEventMessage, NuimoGesture } from "./nuimoMqttMessages";
 import { default as LedMatrices, IconDictionary } from "./ledMatrices";
 import { default as createNuimoEventMessage } from "./nuimoEventConverter";
