@@ -154,6 +154,9 @@ Format:
 } 
 ```
 
+(Not implemented yet)
+
+
 ### nuimoEvent
 Gesture event from Nuimo. The apps should listen to this event.
 
