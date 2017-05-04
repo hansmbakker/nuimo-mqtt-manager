@@ -29,10 +29,12 @@
     "tslint": "^3.6.0"
   },
   "dependencies": {
+    "@types/node": "^6.0.72",
     "automapper-ts": "^1.6.3",
+    "events": "^1.1.1",
     "mqtt": "^1.7.4",
     "nuimo-client": "git+https://github.com/brendonparker/nuimo-client.js.git",
-    "nuimo-client-ts": "file:///Users/hansmbakker/nuimo-client.ts/nuimo-client-ts-0.4.0.tgz",
+    "nuimo-client-ts": "https://github.com/wind-rider/nuimo-client.ts/releases/download/v0.4.0/nuimo-client-ts-0.4.0.tgz",
     "source-map-support": "^0.4.0"
   }
 }
