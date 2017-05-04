@@ -173,3 +173,37 @@ Format:
     "value": 24 //depends on gesture type
 } 
 ```
+
+# Installation
+
+In order to run the application on a vanilla Raspbian you've to run the following commands:
+
+```
+# Install NodeJS and system libraries
+curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+sudo apt-get install nodejs
+sudo apt-get install git, libusb-1.0-0-dev, libudev-dev
+
+# Fetch app repository
+mkdir /home/pi/node
+cd /home/pi/node
+git clone https://github.com/wind-rider/nuimo-mqtt-manager.git
+
+# Install TypeScript and NodeJS dependencies
+sudo npm install -g typescript
+sudo npm install -g typings
+typings install --ambient noble node
+typings install dt~node --global --save
+npm install
+
+# Compile TypeScript
+tsc --lib es2015 src/app/app.ts
+
+# Run the compiled application
+sudo node src/app/app.js
+
+#Demonize the application with pm2
+sudo npm install pm2 -g
+sudo pm2 start src/app/app.js
+sudo pm2 save
+```
