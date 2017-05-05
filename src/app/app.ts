@@ -7,7 +7,7 @@ import { AppManager } from "./appManager";
 import { NuimoApp } from "./nuimoApp";
 
 import { NuimoManager, NuimoDelegate } from "./nuimoManager";
-import { NuimoMqttMessage, NuimoMqttRegisterCommand, NuimoMqttUnregisterCommand, NuimoShowIconCommand, NuimoShowNamedIconCommand, NuimoEventMessage, NuimoGesture } from "./nuimoMqttMessages";
+import { NuimoMqttMessage, NuimoMqttRegisterCommand, NuimoMqttUnregisterCommand, NuimoShowIconCommand, NuimoShowNamedIconCommand, NuimoShowProgressBarIconCommand, NuimoEventMessage, NuimoGesture } from "./nuimoMqttMessages";
 import { default as LedMatrices, IconDictionary } from "./ledMatrices";
 import { default as createNuimoEventMessage } from "./nuimoEventConverter";
 
@@ -125,8 +125,8 @@ class NuimoMqttManager implements NuimoDelegate {
                 case "showNamedIcon":
                     this.showNamedIcon(mqttMessage);
                     break;
-                case "showProgressBarIcon":
-                    this.notImplementedYet(mqttMessage);
+		case "showProgressBarIcon":
+		    this.showProgressBarIcon(mqttMessage);
                     break;
                 case "nuimoEvent":
                     // this event is meant to be handled by clients
@@ -187,6 +187,15 @@ class NuimoMqttManager implements NuimoDelegate {
         else {
             this.logMqtt("icon " + iconName + " not defined!");
         }
+    }
+
+    showProgressBarIcon(messageFromMqtt: NuimoMqttMessage) {
+	let iconMessage = <NuimoShowProgressBarIconCommand>messageFromMqtt;
+	let dots = Math.round(9*iconMessage.value);
+	let progress = '1'.repeat(dots) + '0'.repeat(9 - dots);
+	let icon = '0'.repeat(27) + progress + progress + progress + '0'.repeat(27);
+	this.nuimoManager.showIcon(icon, iconMessage.brightness, iconMessage.duration)
+	this.logMqtt("icon " + icon);
     }
 
     notImplementedYet(messageFromMqtt: NuimoMqttMessage) {
