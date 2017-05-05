@@ -18,11 +18,11 @@ class NuimoMqttManager implements NuimoDelegate {
     appManager = new AppManager();
 
     appTopicRegex = (appId: string): RegExp => {
-        var regex = new RegExp('^nuimo\/(.{8}-?.{4}-?.{4}-?.{4}-?.{12})\/' + appId + '$');
+    var regex = new RegExp('^nuimo\/(.{8}-?.{4}-?.{4}-?.{4}-?.{12}|.{12})\/' + appId + '$');
         return regex;
     };
 
-    genericAppTopicRegex = /^nuimo\/(.{8}-?.{4}-?.{4}-?.{4}-?.{12})\/(.*)$/;
+    genericAppTopicRegex = /^nuimo\/(.{8}-?.{4}-?.{4}-?.{4}-?.{12}|.{12})\/(.*)$/;
     mainTopic = "nuimo";
     logTopic = "nuimo/log";
     appTopic = (appId: string): string => {
